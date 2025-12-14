@@ -1,5 +1,5 @@
 # solana-raydium-bundler
-solana raydium bundler: raydium jito bundler bundling on raydium. It bundles buy/sell to 20 wallets. It uses jito for bundling. This missed some essential parts, so if you need full code or want guide / custom requirements, ping me on telegram[https://t.me/SavantCat].
+solana raydium bundler: raydium jito bundler bundling on raydium. It bundles buy/sell to 20 wallets. It uses jito for bundling. This missed some essential parts, so if you need full code or want guide / custom requirements, ping me on telegram[https://t.me/Rust0x_726].
 
 ## Core functions
 ### Create Keypairs
