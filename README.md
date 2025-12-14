@@ -1,28 +1,96 @@
-# solana-raydium-bundler
-solana raydium bundler: raydium jito bundler bundling on raydium. It bundles buy/sell to 20 wallets. It uses jito for bundling. This missed some essential parts, so if you need full code or want guide / custom requirements, ping me on telegram[https://t.me/Rust0x_726].
+# 🚀 **Copy trading Bot With Rust**
 
-## Core functions
-### Create Keypairs
-This step is crucial if you want to ensure that there is no SOL in the wallets. It is not necessary for every launch but is recommended for initial setups or resets.
+## choose a Trader (Signal Provider): ##
 
-### Premarket
-This is a multi-step process that needs to be done in a specific order:
-1. **Execution Order:** Complete all steps from 2 to 6 in sequence.
-2. **Bundle ID Check:** After each step, verify the Bundle ID to ensure it has landed correctly.
-3. **Retry if Needed:** If the bundle does not land, increase the tip and retry. Exit if necessary.
-4. **Verification:** Use the [Jito Block Explorer](https://explorer.jito.wtf/) to check if the bundle landed. Ignore the "Landed - no" indicator; instead, check if the first included transaction is confirmed.
+-The bot connects to a skilled trader’s account or strategy.
 
-### Create Pool
-Creating a pool might require multiple attempts:
-- **Spam the Function:** If the pool creation does not land on the first try, spam the function.
-- **Increase the Tip:** A tip of 0.1 SOL or more is recommended for better chances of landing within the first few tries.
+-This trader is often called a "leader", "signal provider", or "master".
 
-### Sell Features
-Once the pool is live, you have two options for selling:
-1. **Sell All Keypairs at Once (Step 4):** Use this step to sell all keypairs simultaneously and reclaim WSOL in Step 7 of Premarket (Step 2) after rugging.
-2. **Sell in Percentages (Step 5):** You can sell small percentages of the supply on demand. This involves sending a specified percentage of every keypair's token balance to the fee payers, then selling it all in one singular bundle on one wallet.
+## Mirror Their Trades Automatically: ##
 
-### LP Remove
-Removing LP is straightforward:
-- **Non-Burn Removal:** If you do not burn your LP, it will simply be removed.
+-When the master opens or closes a position, your account automatically mirrors the same action — often within milliseconds.
 
+-Trades are copied proportionally, depending on how much you're willing to risk.
+
+## Automation Layer: ##
+
+-The bot watches for new trades via:
+
+API access to the trader’s account
+
+Blockchain activity (on-chain copy trading)
+
+WebSocket streams or mirror services
+
+-Then it uses your API keys to execute the same trades on your behalf.
+
+# 💬 Contact Me
+
+If you have any question or something, feel free to reach out me anytime via telegram, discord or twitter.
+<br>
+#### 🌹 You're always welcome 🌹
+
+Telegram:  (https://t.me/Rust0x_726) <br>
+
+### 🎯 Example
+- Source Transaction: https://solscan.io/tx/2nNc1DsGxGoYWdweZhKQqnngfEjJqDA4zxnHar2S9bsAYP2csbLRgMpUmy68xuG1RaUGV9xb9k7dGdXcjgcmtJUh
+- Copied Transaction: https://solscan.io/tx/n2qrk4Xg3gfBBci6CXGKFqcTC8695sgNyzvacPHVaNkiwjWecwvY5WdNKgtgJhoLJfug6QkXQuaZeB5hVazW6ev
+- Target Wallet: GXAtmWucJEQxuL8PtpP13atoFi78eM6c9Cuw9fK9W4na
+- Copy Wallet: HqbQwVM2fhdYJXqFhBE68zX6mLqCWqEqdgrtf2ePmjRz
+### 🎯 **Key Features**
+
+- 🛰️ **Real-time WebSocket Streaming**:
+  Connects to Solana's blockchain through Helius geyser RPC WebSocket and listens for new transactions, specifically Tx that target wallet is singer
+- 🔍 **Filter Transactions**:
+  Filters transactions as soon as possible and fast.
+  maybe it takes about 0.3ms totally
+- 📊 ** Make Copy transaction **:
+  Using pumpfun program id and raydium module you can make copy trasaction.
+
+---
+
+## 🚀 **Getting Started**
+
+Follow these steps to get your **Copy trading Bot** up and running!
+
+### Prerequisites
+
+- Cargo version 1.84.0 installed on your system
+- A Solana wallet with access to the Helius Geyser RPC API
+
+### Installation
+
+1. **Clone the Repository**:
+
+   ```bash
+   git clone https://github.com//0xRustPro/solana-copy-trading-bot-rust
+   ```
+
+2. **Install Dependencies**:
+
+   Navigate to the project directory and run the following command:
+
+   ```bash
+   cd copy-trading-bot
+   cargo build
+   ```
+
+3. **Configure ENV**:
+
+   Replace the API token in the `ENDPOINT` variable:
+
+   ```ts
+   const ENDPOINT = "https://mainnet.helius-rpc.com";
+   const WSS_ENDPOINT = "wss://atlas-mainnet.helius-rpc.com";
+   const TARGET = "YOUR_API_TOKEN";
+   ```
+
+4. **Run the Bot**:
+
+   Start the bot by running:
+
+   ```bash
+   cargo run
+   ```
+
+---
